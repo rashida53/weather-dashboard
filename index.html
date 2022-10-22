@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <title>Weather Dashboard</title>
+</head>
+
+<body class="flex-column min-100-vh">
+    <header class="jumbotron">
+        <h1>Weather Dashboard</h1>
+    </header>
+    <main>
+        <div class="flex-container">
+            <div class="card flex-child" style="width: 18rem;">
+                <div class="card-body">
+                    <h4>Search By City Name: </h4>
+                    <form id="user-form" class="card-body">
+                        <label class="form-label" for="cityName"></label>
+                        <input name="cityName" id="cityName" type="text" autofocus="true" class="input-btn" />
+                        <br>
+                        <button type="submit" id="search-btn" class="btn btn-secondary"
+                            style="width: 100%;">Search</button>
+                    </form>
+                    <div id="buttons-list">
+
+                    </div>
+                </div>
+            </div>
+            </aside>
+            <div class="container flex-child">
+                <div id="weather-panel" class="card bg-dark text-white" style="height: 200px; width: 100%;">
+                    <div class="card-img-overlay">
+                        <h3><span id="currentCity"></span> <span id="currentDate"></span></h3>
+                        <ul>
+                            <li>Temp: <span id="temp1"></span></li>
+                            <br>
+                            <li>Wind: <span id="wind1"></span></li>
+                            <br>
+                            <li>Humidity: <span id="humidity1"></span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card-deck" id="card-deck"></div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+</body>
+
+</html>

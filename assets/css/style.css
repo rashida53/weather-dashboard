@@ -1,0 +1,54 @@
+* {
+    box-sizing: border-box;
+}
+
+.flex-container {
+    display: flex;
+}
+
+.flex-child {
+    flex: auto;
+}
+
+
+h1,
+h4 {
+    text-align: center;
+    color: #395144;
+}
+
+h3 {
+    text-align: center;
+    color: #E4DCCF;
+}
+
+.jumbotron {
+    background-color: #7D9D9C;
+}
+
+.card-deck {
+    padding-top: 5%;
+}
+
+.input-btn {
+    width: 100%;
+    border: 1px solid #576F72;
+    margin-bottom: 5%;
+}
+
+.cityButton {
+    width: 100%;
+    padding: 5%;
+}
+
+.content-card {
+    border: 1px solid #395144;
+}
+
+@media screen and (max-width: 768px) {
+
+    main,
+    header {
+        flex-direction: column;
+    }
+}
