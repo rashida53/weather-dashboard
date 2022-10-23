@@ -1,4 +1,6 @@
-var APIkey = "7b4d4ebcc51933b5da1e380d1d12fc0e";
+// var APIkey = "7b4d4ebcc51933b5da1e380d1d12fc0e";
+
+var APIkey = config.APIkey;
 var date = moment().format("MM/DD/YYYY");
 
 var hour = moment().format("H");
