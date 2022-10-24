@@ -31,7 +31,7 @@ var formSubmitHandler = function (event) {
 
     if (cityNameEl) {
         getWeatherInfo(cityNameEl);
-        cityNameEl.value = '';
+        cityName.value = '';
     } else {
         alert('Please enter a city name!');
     }
