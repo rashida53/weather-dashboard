@@ -14,12 +14,14 @@ var currentDate = document.querySelector('#currentDate');
 var tempEl = document.querySelector('#temp1');
 var windEl = document.querySelector('#wind1');
 var humidityEl = document.querySelector('#humidity1');
+var headerImageEl = document.querySelector('#headerImage');
 
 var containerEl = $('#card-deck');
 var buttons = $('#buttons-list');
 var weatherPanelEl = $('#weather-panel');
+var forecastEl = $('#forecastTitle');
 
-
+forecastEl.hide();
 weatherPanelEl.hide();
 
 var formSubmitHandler = function (event) {
@@ -34,8 +36,6 @@ var formSubmitHandler = function (event) {
         alert('Please enter a city name!');
     }
 
-    saveCity();
-
 };
 
 renderCityName();
@@ -49,6 +49,7 @@ function getWeatherInfo(city) {
         .then(function (response) {
             if (response.ok) {
                 response.json().then(function (data) {
+                    saveCity(data.name)
                     displayCurrentWeather(data);
                     displayWeather(data.coord.lat, data.coord.lon);
                 });
@@ -59,13 +60,23 @@ function getWeatherInfo(city) {
 
 var displayCurrentWeather = function (data) {
 
+    console.log(data);
+
     currentCity.textContent = data.name;
     currentDate.textContent = date;
 
-    tempEl.textContent = data.main.temp;
-    windEl.textContent = data.wind.speed;
-    humidityEl.textContent = data.main.humidity;
+    tempEl.textContent = data.main.temp + "°F";
+    windEl.textContent = data.wind.speed + "mph";
+    humidityEl.textContent = data.main.humidity + "%";
 
+    var image = data.weather[0].icon;
+    var newImage = parseInt(hour) > 9 && parseInt(hour) < 21 ? image.slice(0, -1) + 'd' : image.slice(0, -1) + 'n';
+    var imgUrl = `http://openweathermap.org/img/wn/${newImage}.png`
+
+    $('#headerImage').empty();
+    $('#headerImage').prepend(`<img src="${imgUrl}"/>`);
+
+    forecastEl.show();
     weatherPanelEl.show();
 
 };
@@ -88,9 +99,9 @@ var displayWeather = function (lat, lon) {
                                 <div class="card-body content-card">
                                     <h5 class="card-title">Date:${moment.unix(data.list[i].dt).format('MM/DD/YYYY')}</h5>
                                     <img src="http://openweathermap.org/img/wn/${newImage}@2x.png">
-                                    <p class="card-text">Temp: ${data.list[i].main.temp}</p>
-                                    <p class="card-text">Wind: ${data.list[i].wind.speed}</p>
-                                    <p class="card-text">Humidity: ${data.list[i].main.humidity}</p>
+                                    <p class="card-text">Temp: ${data.list[i].main.temp + "°F"}</p>
+                                    <p class="card-text">Wind: ${data.list[i].wind.speed + "mph"}</p>
+                                    <p class="card-text">Humidity: ${data.list[i].main.humidity + "%"}</p>
                                 </div>
                             </div>`
                             containerEl.append(html);
@@ -100,10 +111,9 @@ var displayWeather = function (lat, lon) {
         })
 }
 
-function saveCity() {
-    var cityNameEl = cityName.value.trim();
+function saveCity(city) {
     var key = "cityName";
-    var valueToSave = cityNameEl;
+    var valueToSave = city;
     var history = localStorage.getItem(key);
 
     if (history === null) {

@@ -14,16 +14,17 @@
 h1,
 h4 {
     text-align: center;
-    color: #395144;
+    color: #7D9D9C;
 }
 
 h3 {
     text-align: center;
-    color: #E4DCCF;
+    color: #395144;
 }
 
 .jumbotron {
-    background-color: #7D9D9C;
+    background-color: #395144;
+    border-bottom: 3px solid #7D9D9C;
 }
 
 .card-deck {
@@ -34,6 +35,11 @@ h3 {
     width: 100%;
     border: 1px solid #576F72;
     margin-bottom: 5%;
+    outline: #395144;
+}
+
+#search-btn {
+    color: white;
 }
 
 .cityButton {
@@ -41,8 +47,17 @@ h3 {
     padding: 5%;
 }
 
+.cityButton:hover {
+    background-color: #395144;
+}
+
 .content-card {
     border: 1px solid #395144;
+}
+
+#weather-panel {
+    background-color: #7D9D9C;
+    margin-bottom: 3%;
 }
 
 @media screen and (max-width: 768px) {
